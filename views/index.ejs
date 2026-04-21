@@ -1,0 +1,23 @@
+<h1>Blog Posts</h1>
+<a href="/new">Create Blog</a>
+<hr>
+
+<% blogs.forEach(blog => { %>
+  <div>
+    <h3><%= blog.title %></h3>
+    <p>By <%= blog.author %></p>
+
+    <% if (blog.image) { %>
+      <img src="/uploads/<%= blog.image %>" width="200">
+    <% } %>
+
+    <br>
+    <a href="/blogs/<%= blog._id %>">Read</a>
+    <a href="/blogs/<%= blog._id %>/edit">Edit</a>
+
+    <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+      <button>Delete</button>
+    </form>
+    <hr>
+  </div>
+<% }) %>
